@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+#the root or home page of the blog wich will use template file
 
 
 def home(request):

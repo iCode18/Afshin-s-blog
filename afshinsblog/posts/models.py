@@ -1,5 +1,7 @@
 from django.db import models
 
+#the basic of fields and things need in a blog
+
 
 class Post(models.Model):
     title = models.CharField(max_length=250)
