@@ -4,7 +4,7 @@ from django.urls import path, include
 
 #use include to packe each urls into own app url file
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('malekomodir/', admin.site.urls),
     path('', include('posts.urls')),
 
 ]
