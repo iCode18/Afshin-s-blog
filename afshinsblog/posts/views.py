@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
-#the root or home page of the blog wich will use template file
+from .models import Post
+# the root or home page of the blog which will use template file
 
 
 def home(request):
-    return render(request, 'posts/home.html')
+    posts = Post.objects.order_by('pub_date')
+    return render(request, 'posts/home.html', {'posts':posts})
