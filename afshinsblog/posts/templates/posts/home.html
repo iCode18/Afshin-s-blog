@@ -7,11 +7,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <title>Afshin's Blog!</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse bg-dark">
-   <img src="https://tubby.scene7.com/is/image/tubby/knowhow-header-3?$banner$" alt="KnowHow">
+<nav>
+    <img src="https://tubby.scene7.com/is/image/tubby/knowhow-header-3?$banner$" alt="KnowHow" style='width:100%'>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -37,25 +38,28 @@
 </nav>
 
 <br><br>
-<h1>Welcome to <b>KnowHow_Gulskogen </b>portal!</h1>
+<div class="container">
+    <h1>Welcome to <b>KnowHow_Gulskogen </b>portal!</h1>
+    <br>
+    <h2>Latest Posts: </h2>
+    <hr />
 
-<h2>Latest Posts: </h2>
+    {% for post in posts.all %}
 
-{% for post in posts.all %}
+    <a href="{% url 'detail' post.id %}"><h3>{{ post.title}}</h3></a>
 
-<a href="{% url 'detail' post.id %}">{{ post.title}}</a>
-<br>
-{{ post.pub_date_pretty }}
-<br>
-<img src="{{post.image.url}}"/>
-<br>
+    <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{ post.pub_date_pretty }}</h4>
 
-{{ post.summary}}
-<br>
-----------------------------------------------------------------------------------------------------------------------------------------
-<br>
+    <img src="{{post.image.url}}" class='img-responsive img-thumbnail center-block' style='width:50%; height:50%;'alt="No image"/>
+    <br>
 
-{% endfor %}
+    <p>{{ post.summary}}</p>
+
+    ----------------------------------------------------------------------------------------------------------------------------------------
+    <br><br>
+
+    {% endfor %}
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
